@@ -1,7 +1,9 @@
 package com.elderj.contactsbook;
 
+import java.util.List;
+
 public interface MainActivityView {
 
-    void refreshOrgList();
+    void showOrgList(List<String> orgNames);
 
 }

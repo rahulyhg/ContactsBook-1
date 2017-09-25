@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener {
 
     public TextView orgName;
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
 //        presenter.onResume();
     }
 
-    public void refreshOrgList() {}
+    public void showOrgList(List<String> orgNames) {}
 
     @Override
     public void onClick(View view) {

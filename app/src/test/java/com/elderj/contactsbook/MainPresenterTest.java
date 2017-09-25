@@ -4,7 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.ArrayList;
+
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -38,7 +41,7 @@ public class MainPresenterTest {
         verify(dbConnector).createOrg(any(String.class), any(String.class), any(String.class), captor.capture());
         captor.getValue().actionComplete();
 
-        verify(view).refreshOrgList();
+        verify(view).showOrgList(anyListOf(String.class));
     }
 
 

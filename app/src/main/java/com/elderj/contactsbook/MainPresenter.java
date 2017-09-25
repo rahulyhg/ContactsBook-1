@@ -1,5 +1,7 @@
 package com.elderj.contactsbook;
 
+import java.util.ArrayList;
+
 public class MainPresenter {
 
     private MainActivityView view;
@@ -14,7 +16,7 @@ public class MainPresenter {
         dbConnector.createOrg(name, email, phone, new DatabaseCallback() {
             @Override
             public void actionComplete() {
-
+                view.showOrgList(new ArrayList<String>());
             }
 
         });
