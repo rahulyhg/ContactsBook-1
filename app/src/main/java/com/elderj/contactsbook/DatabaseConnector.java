@@ -45,37 +45,37 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
     public void onCreate(SQLiteDatabase db) {
         String CREATE_ORGS_TABLE =
                 "CREATE TABLE " + TABLE_ORGS + "(" +
-                        KEY_ORG_ID + " INTEGER PRIMARY KEY," +
-                        KEY_ORG_NAME + " VARCHAR(255)," +
-                        KEY_ORG_EMAIL + " VARCHAR(255)," +
+                        KEY_ORG_ID + " INTEGER PRIMARY KEY, " +
+                        KEY_ORG_NAME + " VARCHAR(255), " +
+                        KEY_ORG_EMAIL + " VARCHAR(255), " +
                         KEY_ORG_PHONE + " VARCHAR(255)" +
-                        ")";
+                        "); ";
 
         String CREATE_PEOPLE_TABLE =
                 "CREATE TABLE " + TABLE_PEOPLE + "(" +
-                        KEY_PEOPLE_ID + " INTEGER PRIMARY KEY," +
-                        KEY_PEOPLE_FIRST_NAME + " VARCHAR(255)," +
-                        KEY_PEOPLE_LAST_NAME + " VARCHAR(255)," +
-                        KEY_PEOPLE_EMAIL + " VARCHAR(255)," +
-                        KEY_PEOPLE_PHONE + " VARCHAR(255)," +
-                        KEY_PEOPLE_ORG_ID + " INTEGER," +
-                        "FOREIGN KEY " + KEY_PEOPLE_ORG_ID +
+                        KEY_PEOPLE_ID + " INTEGER PRIMARY KEY, " +
+                        KEY_PEOPLE_FIRST_NAME + " VARCHAR(255), " +
+                        KEY_PEOPLE_LAST_NAME + " VARCHAR(255), " +
+                        KEY_PEOPLE_EMAIL + " VARCHAR(255), " +
+                        KEY_PEOPLE_PHONE + " VARCHAR(255), " +
+                        KEY_PEOPLE_ORG_ID + " INTEGER, " +
+                        " FOREIGN KEY " + KEY_PEOPLE_ORG_ID +
                             " REFERENCES " + TABLE_ORGS + "(" + KEY_ORG_ID + ")" +
                             " ON UPDATE SET NULL ON DELETE SET NULL" +
-                        ")";
+                        "); ";
 
         String CREATE_ORG_PEOPLE_TABLE =
                 "CREATE TABLE " + TABLE_ORG_PEOPLE + "(" +
-                        KEY_ORG_PEOPLE_ID + " INTEGER PRIMARY KEY," +
-                        KEY_ORG_PEOPLE_ORG_ID + " INTEGER," +
-                        "FOREIGN KEY " + KEY_ORG_PEOPLE_ORG_ID +
-                        " REFERENCES " + TABLE_ORGS + "(" + KEY_ORG_ID + ")" +
-                        " ON UPDATE SET NULL ON DELETE SET NULL," +
-                        KEY_ORG_PEOPLE_PEOPLE_ID + " INTEGER," +
-                        "FOREIGN KEY " + KEY_ORG_PEOPLE_PEOPLE_ID +
+                        KEY_ORG_PEOPLE_ID + " INTEGER PRIMARY KEY, " +
+                        KEY_ORG_PEOPLE_ORG_ID + " INTEGER, " +
+                        " FOREIGN KEY " + KEY_ORG_PEOPLE_ORG_ID +
+                        " REFERENCES " + TABLE_ORGS + "(" + KEY_ORG_ID + ") " +
+                        " ON UPDATE SET NULL ON DELETE SET NULL, " +
+                        KEY_ORG_PEOPLE_PEOPLE_ID + " INTEGER, " +
+                        " FOREIGN KEY " + KEY_ORG_PEOPLE_PEOPLE_ID +
                             " REFERENCES " + TABLE_PEOPLE + "(" + KEY_PEOPLE_ID + ")" +
                             " ON UPDATE SET NULL ON DELETE SET NULL" +
-                        ")";
+                        "); ";
 
         String CREATE_TABLES = CREATE_ORGS_TABLE +
                         CREATE_PEOPLE_TABLE +
@@ -86,9 +86,9 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS " + TABLE_ORGS + ", " +
-                "DROP TABLE IF EXISTS " + TABLE_PEOPLE + ", " +
-                "DROP TABLE IF EXISTS " + TABLE_ORG_PEOPLE;
+        String sql = "DROP TABLE IF EXISTS " + TABLE_ORGS + "; " +
+                "DROP TABLE IF EXISTS " + TABLE_PEOPLE + "; " +
+                "DROP TABLE IF EXISTS " + TABLE_ORG_PEOPLE + ";";
         db.execSQL(sql);
         onCreate(db);
     }
