@@ -2,6 +2,7 @@ package com.elderj.contactsbook;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -112,9 +113,21 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         });
     }
 
-    public ArrayList<?> readOrgs() {
+    public ArrayList<String> readAllOrgs() {
+        ArrayList<String> orgs = new ArrayList<>();
+        final SQLiteDatabase read_db = this.getReadableDatabase();
 
-        return new ArrayList<>();
+        String sql = "SELECT * FROM " + TABLE_ORGS;
+        Cursor cursor = read_db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                orgs.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        read_db.close();
+        return orgs;
     }
 
 }

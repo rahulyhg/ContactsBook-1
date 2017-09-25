@@ -4,8 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
-import java.util.ArrayList;
-
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.mock;
@@ -59,7 +57,7 @@ public class MainPresenterTest {
 
         presenter.onResume();
 
-        verify(dbConnector).readOrgs();
+        verify(dbConnector).readAllOrgs();
     }
 
 }

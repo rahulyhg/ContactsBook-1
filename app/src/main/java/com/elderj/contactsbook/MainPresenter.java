@@ -23,9 +23,9 @@ public class MainPresenter {
     }
 
     public void onResume() {
-        ArrayList<?> orgs = dbConnector.readOrgs();
+        ArrayList<String> orgs = dbConnector.readAllOrgs();
 
-        view.showOrgList(new ArrayList<String>());
+        view.showOrgList(orgs);
     }
 
 }
