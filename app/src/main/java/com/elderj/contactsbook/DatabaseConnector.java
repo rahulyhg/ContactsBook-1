@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -109,7 +110,11 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
                 callback.actionComplete();
             }
         });
+    }
 
+    public ArrayList<?> readOrgs() {
+
+        return new ArrayList<>();
     }
 
 }

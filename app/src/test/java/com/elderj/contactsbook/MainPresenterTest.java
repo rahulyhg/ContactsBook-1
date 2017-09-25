@@ -52,5 +52,14 @@ public class MainPresenterTest {
 
         verify(view).showOrgList(anyListOf(String.class));
     }
-    
+
+    @Test
+    public void on_resume_presenter_reads_orgs_from_database() {
+        presenter = new MainPresenter(view, dbConnector);
+
+        presenter.onResume();
+
+        verify(dbConnector).readOrgs();
+    }
+
 }
