@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     public TextView orgPhone;
     public EditText orgPhoneEdit;
     public Button saveOrg;
+    public MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +32,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         saveOrg = (Button) findViewById(R.id.save_org);
         saveOrg.setOnClickListener(this);
 
-        MainPresenter presenter = new MainPresenter(this);
-
+        presenter = new MainPresenter(this);
     }
 
     @Override
     public void onClick(View view) {
+        String name = orgNameEdit.getText().toString();
+        String email = orgEmailEdit.getText().toString();
+        String phone = orgPhoneEdit.getText().toString();
 
-
+        presenter.saveOrgButtonTapped(name, email, phone);
     }
-
-
 
 }

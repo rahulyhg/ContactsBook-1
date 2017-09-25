@@ -2,7 +2,7 @@
     <string name="app_name">ContactsBook</string>
     <string name="organisation_name">Organisation name</string>
     <string name="enter_organisation_name">Enter organisation name</string>
-    <string name="organisation_email_address">organisation email address</string>
+    <string name="organisation_email_address">Organisation email address</string>
     <string name="enter_email_address">Enter email address</string>
     <string name="organisation_phone_number">Organisation phone number</string>
     <string name="enter_phone_number">Enter phone number</string>
