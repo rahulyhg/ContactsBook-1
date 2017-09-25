@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener {
 
     public TextView orgName;
     public EditText orgNameEdit;
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         orgPhoneEdit = (EditText) findViewById(R.id.org_phone_edit);
         saveOrg = (Button) findViewById(R.id.save_org);
         saveOrg.setOnClickListener(this);
+
+        MainPresenter presenter = new MainPresenter(this);
 
     }
 
