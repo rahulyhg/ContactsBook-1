@@ -23,7 +23,7 @@ public class MainPresenter {
     }
 
     public void onResume() {
-
+        view.showOrgList(new ArrayList<String>());
     }
 
 }
