@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
 
     @Override
     protected void onResume() {
-//        presenter.onResume();
+        presenter.onResume();
     }
 
     public void showOrgList(List<String> orgNames) {}

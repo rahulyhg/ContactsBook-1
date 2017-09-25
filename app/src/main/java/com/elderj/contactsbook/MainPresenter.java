@@ -22,4 +22,8 @@ public class MainPresenter {
         });
     }
 
+    public void onResume() {
+
+    }
+
 }

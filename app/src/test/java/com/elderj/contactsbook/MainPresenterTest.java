@@ -44,5 +44,13 @@ public class MainPresenterTest {
         verify(view).showOrgList(anyListOf(String.class));
     }
 
+    @Test
+    public void on_resume_presenter_tells_view_to_show_org_list() {
+        presenter = new MainPresenter(view, dbConnector);
 
+        presenter.onResume();
+
+        verify(view).showOrgList(anyListOf(String.class));
+    }
+    
 }
