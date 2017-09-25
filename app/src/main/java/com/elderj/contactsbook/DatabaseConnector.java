@@ -1,5 +1,6 @@
 package com.elderj.contactsbook;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -86,6 +87,15 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         onCreate(db);
     }
 
-    public void saveNewOrg(String name, String email, String phone) {}
+    public void createOrg(String name, String email, String phone) {
+        SQLiteDatabase write_db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_ORG_NAME, name);
+        values.put(KEY_ORG_EMAIL, email);
+        values.put(KEY_ORG_PHONE, phone);
+
+        write_db.insert(TABLE_ORGS, null, values);
+        write_db.close();
+    }
 
 }
