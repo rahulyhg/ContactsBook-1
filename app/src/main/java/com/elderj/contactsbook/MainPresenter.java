@@ -23,6 +23,8 @@ public class MainPresenter {
     }
 
     public void onResume() {
+        ArrayList<?> orgs = dbConnector.readOrgs();
+
         view.showOrgList(new ArrayList<String>());
     }
 
