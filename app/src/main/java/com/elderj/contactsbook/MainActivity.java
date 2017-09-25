@@ -2,11 +2,12 @@ package com.elderj.contactsbook;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public TextView orgName;
     public EditText orgNameEdit;
@@ -28,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
         orgPhone = (TextView) findViewById(R.id.org_phone);
         orgPhoneEdit = (EditText) findViewById(R.id.org_phone_edit);
         saveOrg = (Button) findViewById(R.id.save_org);
+        saveOrg.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
 
     }
 
