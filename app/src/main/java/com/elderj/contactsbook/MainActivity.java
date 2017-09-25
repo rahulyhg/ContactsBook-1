@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     }
 
     @Override
+    protected void onResume() {
+//        presenter.onResume();
+    }
+
+    public void refreshOrgList() {}
+
+    @Override
     public void onClick(View view) {
         String name = orgNameEdit.getText().toString();
         String email = orgEmailEdit.getText().toString();

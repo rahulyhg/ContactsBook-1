@@ -2,6 +2,7 @@ package com.elderj.contactsbook;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -27,6 +28,18 @@ public class MainPresenterTest {
         verify(dbConnector).createOrg(any(String.class), any(String.class), any(String.class), any(DatabaseCallback.class));
     }
 
+    @Test
+    public void on_database_callback_complete_presenter_tells_view_to_update_text() {
+        presenter = new MainPresenter(view, dbConnector);
+
+        ArgumentCaptor<DatabaseCallback> captor = ArgumentCaptor.forClass(DatabaseCallback.class);
+
+        presenter.saveOrgButtonTapped("", "", "");
+        verify(dbConnector).createOrg(any(String.class), any(String.class), any(String.class), captor.capture());
+        captor.getValue().actionComplete();
+
+        verify(view).refreshOrgList();
+    }
 
 
 }
