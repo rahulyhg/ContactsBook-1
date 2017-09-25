@@ -11,7 +11,7 @@ public class MainPresenter {
     }
 
     public void saveOrgButtonTapped(String name, String email, String phone) {
-        dbConnector.saveNewOrg(name, email, phone);
+        dbConnector.createOrg(name, email, phone);
     }
 
 }

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         saveOrg = (Button) findViewById(R.id.save_org);
         saveOrg.setOnClickListener(this);
 
-        presenter = new MainPresenter(this, new DatabaseConnector());
+        presenter = new MainPresenter(this, new DatabaseConnector(this));
     }
 
     @Override
