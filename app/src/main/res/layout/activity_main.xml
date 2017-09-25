@@ -65,11 +65,11 @@
         android:background="#000000"
         android:id="@+id/separator" />
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="@string/contacts_listview_here"
-        android:id="@+id/contacts_placeholder" />
+        android:id="@+id/org_listview" />
 
 </LinearLayout>

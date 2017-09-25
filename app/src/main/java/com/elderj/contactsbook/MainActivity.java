@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     public TextView orgPhone;
     public EditText orgPhoneEdit;
     public Button saveOrg;
+    public ListView orgListView;
+
     public MainPresenter presenter;
 
     @Override
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         orgPhoneEdit = (EditText) findViewById(R.id.org_phone_edit);
         saveOrg = (Button) findViewById(R.id.save_org);
         saveOrg.setOnClickListener(this);
+        orgListView = (ListView) findViewById(R.id.org_listview);
 
         presenter = new MainPresenter(this, new DatabaseConnector(this));
     }
