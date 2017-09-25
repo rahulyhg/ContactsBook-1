@@ -24,7 +24,9 @@ public class MainPresenterTest {
         presenter = new MainPresenter(view, dbConnector);
         presenter.saveOrgButtonTapped("", "", "");
 
-        verify(dbConnector).createOrg(any(String.class), any(String.class), any(String.class));
+        verify(dbConnector).createOrg(any(String.class), any(String.class), any(String.class), any(DatabaseCallback.class));
     }
+
+
 
 }

@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConnecting {
 
     private static final int DATABASE_VERSION = 1;
@@ -29,10 +32,12 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
     private static final String KEY_ORG_PEOPLE_ORG_ID = "org_id";
     private static final String KEY_ORG_PEOPLE_PEOPLE_ID = "people_id";
 
+    private ExecutorService executorService;
 
 
     public DatabaseConnector(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        executorService = Executors.newSingleThreadExecutor();
     }
 
     @Override
@@ -87,15 +92,24 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         onCreate(db);
     }
 
-    public void createOrg(String name, String email, String phone) {
-        SQLiteDatabase write_db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_ORG_NAME, name);
-        values.put(KEY_ORG_EMAIL, email);
-        values.put(KEY_ORG_PHONE, phone);
+    public void createOrg(final String name, final String email, final String phone, final DatabaseCallback callback) {
+        final SQLiteDatabase write_db = this.getWritableDatabase();
 
-        write_db.insert(TABLE_ORGS, null, values);
-        write_db.close();
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                ContentValues values = new ContentValues();
+                values.put(KEY_ORG_NAME, name);
+                values.put(KEY_ORG_EMAIL, email);
+                values.put(KEY_ORG_PHONE, phone);
+
+                write_db.insert(TABLE_ORGS, null, values);
+                write_db.close();
+
+                callback.actionComplete();
+            }
+        });
+
     }
 
 }

@@ -11,7 +11,14 @@ public class MainPresenter {
     }
 
     public void saveOrgButtonTapped(String name, String email, String phone) {
-        dbConnector.createOrg(name, email, phone);
+
+        dbConnector.createOrg(name, email, phone, new DatabaseCallback() {
+            @Override
+            public void actionComplete() {
+
+            }
+
+        });
     }
 
 }
