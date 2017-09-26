@@ -38,7 +38,14 @@ public class MainPresenter {
     public void updateOrgTapped(int orgId, String name, String email, String phone) {
         Org updatedOrg = new Org(orgId, name, email, phone);
 
-//        dbConnector.updateOrg(updatedOrg);
+        dbConnector.updateOrg(updatedOrg, new DatabaseCallback() {
+            @Override
+            public void actionComplete() {
+
+
+            }
+
+        });
     }
 
 }

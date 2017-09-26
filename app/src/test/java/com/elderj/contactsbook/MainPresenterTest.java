@@ -75,7 +75,7 @@ public class MainPresenterTest {
         presenter.updateOrgTapped(0, "newName", "newEmail", "newPhone");
         Org updatedOrg = new Org(0, "newName", "newEmail", "newPhone");
 
-        verify(dbConnector).updateOrg(eq(updatedOrg));
+        verify(dbConnector).updateOrg(eq(updatedOrg), any(DatabaseCallback.class));
     }
 
 }
