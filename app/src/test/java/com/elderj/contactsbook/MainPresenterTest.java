@@ -60,4 +60,12 @@ public class MainPresenterTest {
         verify(dbConnector).readAllOrgs();
     }
 
+    @Test
+    public void on_org_tapped_presenter_tells_view_to_show_populated_edit_org_form() {
+        presenter = new MainPresenter(view, dbConnector);
+        presenter.orgListingTapped(new Org(0, "", "", ""));
+
+        verify(view).editOrg(any(Org.class));
+    }
+
 }

@@ -65,7 +65,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
                 : View.VISIBLE );
     }
 
-    public void edit_org(View view) {}
+    public void editOrg(Org org) {
+
+
+    }
 
     @Override
     public void onClick(View view) {
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        presenter.orgListingTapped(parent.getItemAtPosition(position));
+        Org org = (Org) parent.getItemAtPosition(position);
+
+        presenter.orgListingTapped(org);
     }
 }
