@@ -30,4 +30,8 @@ public class MainPresenter {
         view.showOrgList(orgs);
     }
 
+    public void orgListingTapped(Object org) {
+        System.out.println("org: " + org);
+    }
+
 }
