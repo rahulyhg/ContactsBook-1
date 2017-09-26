@@ -66,22 +66,21 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
                 : View.VISIBLE );
     }
 
-    public void editOrg(Org org) {
-        showNoticeDialog();
-    }
+    public void showEditOrgDialog(Org org) {
+        DialogFragment dialog = EditOrgDialogFragment.newInstance(org.id);
 
-    private void showNoticeDialog() {
-        DialogFragment dialog = new EditOrgDialogFragment();
         dialog.show(getSupportFragmentManager(), "EditOrgDialogFragment");
     }
 
     @Override
-    public void onDialogPositiveClick(String newName) {
+    public void onDialogPositiveClick(int orgId, String newName, String newEmail, String newPhone) {
+        presenter.updateOrgTapped(orgId, newName, newEmail, newPhone);
+
         System.out.println("new name " + newName);
     }
 
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {}
+//    @Override
+//    public void onDialogNegativeClick(DialogFragment dialog) {}
 
     @Override
     public void onClick(View view) {

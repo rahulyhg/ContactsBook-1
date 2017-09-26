@@ -13,12 +13,24 @@ import android.widget.EditText;
 public class EditOrgDialogFragment extends DialogFragment {
 
     public interface EditOrgDialogListener {
-        public void onDialogPositiveClick(String newName);
-        public void onDialogNegativeClick(DialogFragment dialog);
+        void onDialogPositiveClick(int orgId, String newName, String newEmail, String newPhone);
+//        void onDialogNegativeClick(DialogFragment dialog);
     }
 
     EditOrgDialogListener listener;
     EditText nameEdit;
+    EditText emailEdit;
+    EditText phoneEdit;
+    int orgId;
+
+    static EditOrgDialogFragment newInstance(int orgId) {
+        EditOrgDialogFragment fragment = new EditOrgDialogFragment();
+        Bundle args = new Bundle();
+        args.putInt("orgId", orgId);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -32,21 +44,28 @@ public class EditOrgDialogFragment extends DialogFragment {
         }
     }
 
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        super.onCreateDialog(savedInstanceState);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_edit_org, null);
         builder.setView(view);
 
         nameEdit = (EditText) view.findViewById(R.id.dialog_org_name);
+        emailEdit = (EditText) view.findViewById(R.id.dialog_org_email);
+        phoneEdit = (EditText) view.findViewById(R.id.dialog_org_phone);
 
         builder.setPositiveButton("save changes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        orgId = getArguments().getInt("orgId");
                         String newName = nameEdit.getText().toString();
-                        listener.onDialogPositiveClick(newName);
+                        String newEmail = emailEdit.getText().toString();
+                        String newPhone = phoneEdit.getText().toString();
+
+                        listener.onDialogPositiveClick(orgId, newName, newEmail, newPhone);
                     }
                 });
 

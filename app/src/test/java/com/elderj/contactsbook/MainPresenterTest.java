@@ -65,7 +65,7 @@ public class MainPresenterTest {
         presenter = new MainPresenter(view, dbConnector);
         presenter.orgListingTapped(new Org(0, "", "", ""));
 
-        verify(view).editOrg(any(Org.class));
+        verify(view).showEditOrgDialog(any(Org.class));
     }
 
 }

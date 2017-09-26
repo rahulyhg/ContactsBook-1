@@ -32,7 +32,7 @@ public class MainPresenter {
 
     public void orgListingTapped(Org org) {
 
-        view.editOrg(org);
+        view.showEditOrgDialog(org);
     }
 
 }

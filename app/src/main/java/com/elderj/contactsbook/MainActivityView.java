@@ -5,6 +5,6 @@ import java.util.List;
 public interface MainActivityView {
 
     void showOrgList(List<Org> orgs);
-    void editOrg(Org org);
+    void showEditOrgDialog(Org org);
 
 }
