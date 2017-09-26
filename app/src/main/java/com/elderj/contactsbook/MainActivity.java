@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         setContentView(R.layout.activity_main);
 
         newOrgForm = (LinearLayout) findViewById(R.id.new_org_form);
+        newOrgForm.setVisibility(View.GONE);
         orgName = (TextView) findViewById(R.id.org_name);
         orgNameEdit = (EditText) findViewById(R.id.org_name_edit);
         orgEmail = (TextView) findViewById(R.id.org_email);
@@ -50,8 +51,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         presenter.onResume();
     }
 
-    public void showOrgList(List<String> orgNames) {
-        OrgAdapter adapter = new OrgAdapter(this, orgNames);
+    public void showOrgList(List<Org> orgs) {
+        OrgAdapter adapter = new OrgAdapter(this, orgs);
         orgListView.setAdapter(adapter);
     }
 

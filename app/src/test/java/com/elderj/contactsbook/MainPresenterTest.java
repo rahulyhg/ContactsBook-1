@@ -39,7 +39,7 @@ public class MainPresenterTest {
         verify(dbConnector).createOrg(any(String.class), any(String.class), any(String.class), captor.capture());
         captor.getValue().actionComplete();
 
-        verify(view).showOrgList(anyListOf(String.class));
+        verify(view).showOrgList(anyListOf(Org.class));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class MainPresenterTest {
 
         presenter.onResume();
 
-        verify(view).showOrgList(anyListOf(String.class));
+        verify(view).showOrgList(anyListOf(Org.class));
     }
 
     @Test

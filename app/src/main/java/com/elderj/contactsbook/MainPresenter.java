@@ -17,15 +17,15 @@ public class MainPresenter {
         dbConnector.createOrg(name, email, phone, new DatabaseCallback() {
             @Override
             public void actionComplete() {
-                List<String> orgNames = dbConnector.readAllOrgs();
-                view.showOrgList(orgNames);
+                List<Org> orgs = dbConnector.readAllOrgs();
+                view.showOrgList(orgs);
             }
 
         });
     }
 
     public void onResume() {
-        ArrayList<String> orgs = dbConnector.readAllOrgs();
+        ArrayList<Org> orgs = dbConnector.readAllOrgs();
 
         view.showOrgList(orgs);
     }

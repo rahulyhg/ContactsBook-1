@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class OrgAdapter extends ArrayAdapter<String> {
+public class OrgAdapter extends ArrayAdapter<Org> {
 
-    private String org;
+    private Org org;
 
-    public OrgAdapter(Context context, List<String> orgNames) {
-        super(context, 0, orgNames);
+    public OrgAdapter(Context context, List<Org> orgs) {
+        super(context, 0, orgs);
     }
 
     @Override
@@ -26,11 +26,11 @@ public class OrgAdapter extends ArrayAdapter<String> {
         }
 
         TextView orgName = (TextView) convertView.findViewById(R.id.org_name);
-        orgName.setText(org);
+        orgName.setText(org.name);
         TextView orgEmail = (TextView) convertView.findViewById(R.id.org_email);
-        orgEmail.setText("org email");
+        orgEmail.setText(org.email);
         TextView orgPhone = (TextView) convertView.findViewById(R.id.org_phone);
-        orgPhone.setText("01001 001 001");
+        orgPhone.setText(org.phone);
 
         return convertView;
     }

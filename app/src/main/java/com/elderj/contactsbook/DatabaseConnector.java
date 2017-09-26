@@ -113,8 +113,8 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         });
     }
 
-    public ArrayList<String> readAllOrgs() {
-        ArrayList<String> orgs = new ArrayList<>();
+    public ArrayList<Org> readAllOrgs() {
+        ArrayList<Org> orgs = new ArrayList<>();
         final SQLiteDatabase read_db = this.getReadableDatabase();
 
         String sql = "SELECT * FROM " + TABLE_ORGS;
@@ -122,7 +122,13 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
 
         if (cursor.moveToFirst()) {
             do {
-                orgs.add(cursor.getString(1));
+                Org org = new Org(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3)
+                );
+                orgs.add(org);
             } while (cursor.moveToNext());
         }
 
