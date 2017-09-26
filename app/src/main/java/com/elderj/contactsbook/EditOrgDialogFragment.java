@@ -23,10 +23,13 @@ public class EditOrgDialogFragment extends DialogFragment {
     EditText phoneEdit;
     int orgId;
 
-    static EditOrgDialogFragment newInstance(int orgId) {
+    static EditOrgDialogFragment newInstance(Org org) {
         EditOrgDialogFragment fragment = new EditOrgDialogFragment();
         Bundle args = new Bundle();
-        args.putInt("orgId", orgId);
+        args.putInt("orgId", org.id);
+        args.putString("orgName", org.name);
+        args.putString("orgEmail", org.email);
+        args.putString("orgPhone", org.phone);
         fragment.setArguments(args);
 
         return fragment;
@@ -54,8 +57,11 @@ public class EditOrgDialogFragment extends DialogFragment {
         builder.setView(view);
 
         nameEdit = (EditText) view.findViewById(R.id.dialog_org_name);
+        nameEdit.setText(getArguments().getString("orgName"));
         emailEdit = (EditText) view.findViewById(R.id.dialog_org_email);
+        emailEdit.setText(getArguments().getString("orgEmail"));
         phoneEdit = (EditText) view.findViewById(R.id.dialog_org_phone);
+        phoneEdit.setText(getArguments().getString("orgPhone"));
 
         builder.setPositiveButton("save changes", new DialogInterface.OnClickListener() {
                     @Override

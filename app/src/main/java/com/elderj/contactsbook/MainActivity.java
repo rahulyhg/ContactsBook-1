@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     }
 
     public void showEditOrgDialog(Org org) {
-        DialogFragment dialog = EditOrgDialogFragment.newInstance(org.id);
+        DialogFragment dialog = EditOrgDialogFragment.newInstance(org);
 
         dialog.show(getSupportFragmentManager(), "EditOrgDialogFragment");
     }
