@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener {
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     }
 
     public void showOrgList(List<String> orgNames) {
-        System.out.println("show org list " + orgNames);
+        OrgAdapter adapter = new OrgAdapter(this, orgNames);
+        orgListView.setAdapter(adapter);
     }
 
     @Override
