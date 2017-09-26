@@ -136,4 +136,6 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         return orgs;
     }
 
+    public void updateOrg(Org updatedOrg) {}
+
 }

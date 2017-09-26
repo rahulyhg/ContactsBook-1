@@ -6,6 +6,7 @@ import org.mockito.ArgumentCaptor;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -66,6 +67,15 @@ public class MainPresenterTest {
         presenter.orgListingTapped(new Org(0, "", "", ""));
 
         verify(view).showEditOrgDialog(any(Org.class));
+    }
+
+    @Test
+    public void on_org_data_edited_presenter_tells_db_to_update_data() {
+        presenter = new MainPresenter(view, dbConnector);
+        presenter.updateOrgTapped(0, "newName", "newEmail", "newPhone");
+        Org updatedOrg = new Org(0, "newName", "newEmail", "newPhone");
+
+        verify(dbConnector).updateOrg(eq(updatedOrg));
     }
 
 }

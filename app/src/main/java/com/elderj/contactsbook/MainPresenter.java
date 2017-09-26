@@ -35,4 +35,10 @@ public class MainPresenter {
         view.showEditOrgDialog(org);
     }
 
+    public void updateOrgTapped(int orgId, String name, String email, String phone) {
+        Org updatedOrg = new Org(orgId, name, email, phone);
+
+//        dbConnector.updateOrg(updatedOrg);
+    }
+
 }
