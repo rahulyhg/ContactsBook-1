@@ -1,5 +1,6 @@
 package com.elderj.contactsbook;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener, AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener, AdapterView.OnItemClickListener, EditOrgDialogFragment.EditOrgDialogListener {
 
     private LinearLayout newOrgForm;
     public TextView orgName;
@@ -66,9 +67,21 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     }
 
     public void editOrg(Org org) {
-
-
+        showNoticeDialog();
     }
+
+    private void showNoticeDialog() {
+        DialogFragment dialog = new EditOrgDialogFragment();
+        dialog.show(getSupportFragmentManager(), "EditOrgDialogFragment");
+    }
+
+    @Override
+    public void onDialogPositiveClick(String newName) {
+        System.out.println("new name " + newName);
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {}
 
     @Override
     public void onClick(View view) {
