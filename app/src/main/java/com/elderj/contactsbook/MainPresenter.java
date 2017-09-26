@@ -41,8 +41,8 @@ public class MainPresenter {
         dbConnector.updateOrg(updatedOrg, new DatabaseCallback() {
             @Override
             public void actionComplete() {
-
-
+                List<Org> orgs = dbConnector.readAllOrgs();
+                view.showOrgList(orgs);
             }
 
         });

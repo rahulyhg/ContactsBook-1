@@ -1,5 +1,6 @@
 package com.elderj.contactsbook;
 
+import android.content.Context;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     public Button saveOrg;
     public ListView orgListView;
 
+    Context context;
     public MainPresenter presenter;
 
     @Override
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         orgListView = (ListView) findViewById(R.id.org_listview);
         orgListView.setOnItemClickListener(this);
 
+        context = this;
+
         presenter = new MainPresenter(this, new DatabaseConnector(this));
     }
 
@@ -56,8 +60,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     }
 
     public void showOrgList(final List<Org> orgs) {
-        OrgAdapter adapter = new OrgAdapter(this, orgs);
-        orgListView.setAdapter(adapter);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                OrgAdapter adapter = new OrgAdapter(context, orgs);
+                orgListView.setAdapter(adapter);
+            }
+        });
+
     }
 
     public void toggle_contents(View view) {

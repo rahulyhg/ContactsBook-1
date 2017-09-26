@@ -136,8 +136,24 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         return orgs;
     }
 
-    public void updateOrg(Org updatedOrg, DatabaseCallback callback) {
+    public void updateOrg(final Org updatedOrg, final DatabaseCallback callback) {
+        final SQLiteDatabase write_db = this.getWritableDatabase();
 
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                String sql = "UPDATE " + TABLE_ORGS +
+                        " SET " + KEY_ORG_NAME + " = '" + updatedOrg.name + "', " +
+                            KEY_ORG_EMAIL + " = '" + updatedOrg.email + "', " +
+                            KEY_ORG_PHONE + " = '" + updatedOrg.phone +
+                        "' WHERE id = '" + updatedOrg.id + "';";
+
+                write_db.execSQL(sql);
+                write_db.close();
+
+                callback.actionComplete();
+            }
+        });
 
     }
 
