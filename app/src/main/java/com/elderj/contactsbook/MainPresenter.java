@@ -31,7 +31,8 @@ public class MainPresenter {
     }
 
     public void orgListingTapped(Org org) {
-        System.out.println("org: " + org);
+
+        view.editOrg(org);
     }
 
 }
