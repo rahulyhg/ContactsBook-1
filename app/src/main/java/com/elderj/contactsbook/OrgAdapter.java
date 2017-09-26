@@ -25,8 +25,12 @@ public class OrgAdapter extends ArrayAdapter<String> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.org_listview_item, parent, false);
         }
 
-        TextView orgName = (TextView) convertView.findViewById(R.id.org_listview_name);
+        TextView orgName = (TextView) convertView.findViewById(R.id.org_name);
         orgName.setText(org);
+        TextView orgEmail = (TextView) convertView.findViewById(R.id.org_email);
+        orgEmail.setText("org email");
+        TextView orgPhone = (TextView) convertView.findViewById(R.id.org_phone);
+        orgPhone.setText("01001 001 001");
 
         return convertView;
     }

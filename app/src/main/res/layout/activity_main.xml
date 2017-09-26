@@ -9,7 +9,7 @@
     tools:context="com.elderj.contactsbook.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_new_organisation"
         android:layout_margin="10dp"
@@ -23,26 +23,12 @@
         android:orientation="vertical"
         android:id="@+id/new_org_form">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/organisation_name"
-            android:id="@+id/org_name" />
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="@string/enter_organisation_name"
             android:id="@+id/org_name_edit" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/organisation_email_address"
-            android:id="@+id/org_email" />
 
         <EditText
             android:layout_width="match_parent"
@@ -51,13 +37,6 @@
             android:hint="@string/enter_email_address"
             android:inputType="textEmailAddress"
             android:id="@+id/org_email_edit" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/organisation_phone_number"
-            android:id="@+id/org_phone" />
 
         <EditText
             android:layout_width="match_parent"
