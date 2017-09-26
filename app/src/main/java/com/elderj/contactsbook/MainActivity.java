@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         saveOrg.setOnClickListener(this);
 
         orgListView = (ListView) findViewById(R.id.org_listview);
+        orgListView.setVisibility(View.GONE);
         orgListView.setOnItemClickListener(this);
 
         context = this;
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     }
 
     public void showOrgList(final List<Org> orgs) {
-
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -68,13 +68,22 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
                 orgListView.setAdapter(adapter);
             }
         });
-
     }
 
     public void toggle_contents(View view) {
-        newOrgForm.setVisibility( newOrgForm.isShown()
-                ? View.GONE
-                : View.VISIBLE );
+        switch (view.getId()) {
+            case R.id.expandable_new_org_form:
+                newOrgForm.setVisibility( newOrgForm.isShown()
+                        ? View.GONE
+                        : View.VISIBLE );
+                break;
+            case R.id.expandable_org_listview:
+                orgListView.setVisibility( orgListView.isShown()
+                        ? View.GONE
+                        : View.VISIBLE );
+                break;
+        }
+
     }
 
     public void showEditOrgDialog(Org org) {
@@ -86,12 +95,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     @Override
     public void onDialogPositiveClick(int orgId, String newName, String newEmail, String newPhone) {
         presenter.updateOrgTapped(orgId, newName, newEmail, newPhone);
-
-        System.out.println("new name " + newName);
     }
-
-//    @Override
-//    public void onDialogNegativeClick(DialogFragment dialog) {}
 
     @Override
     public void onClick(View view) {

@@ -12,10 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_new_organisation"
+        android:textSize="24sp"
         android:layout_margin="10dp"
         android:clickable="true"
         android:onClick="toggle_contents"
-        android:id="@+id/expandable" />
+        android:id="@+id/expandable_new_org_form" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,6 +54,11 @@
             android:text="@string/save_new_organisation_contact"
             android:id="@+id/save_org" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#000000" />
+
     </LinearLayout>
 
     <View
@@ -61,11 +67,20 @@
         android:background="#000000"
         android:id="@+id/separator" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_orgs"
+        android:textSize="24sp"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:onClick="toggle_contents"
+        android:id="@+id/expandable_org_listview" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/contacts_listview_here"
         android:id="@+id/org_listview" />
 
 </LinearLayout>

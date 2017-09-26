@@ -14,7 +14,6 @@ public class EditOrgDialogFragment extends DialogFragment {
 
     public interface EditOrgDialogListener {
         void onDialogPositiveClick(int orgId, String newName, String newEmail, String newPhone);
-//        void onDialogNegativeClick(DialogFragment dialog);
     }
 
     EditOrgDialogListener listener;
@@ -84,6 +83,5 @@ public class EditOrgDialogFragment extends DialogFragment {
 
         return builder.create();
     }
-
 
 }
