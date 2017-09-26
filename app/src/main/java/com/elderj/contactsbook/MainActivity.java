@@ -5,14 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener {
 
+    private LinearLayout newOrgForm;
     public TextView orgName;
     public EditText orgNameEdit;
     public TextView orgEmail;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        newOrgForm = (LinearLayout) findViewById(R.id.new_org_form);
         orgName = (TextView) findViewById(R.id.org_name);
         orgNameEdit = (EditText) findViewById(R.id.org_name_edit);
         orgEmail = (TextView) findViewById(R.id.org_email);
@@ -51,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     public void showOrgList(List<String> orgNames) {
         OrgAdapter adapter = new OrgAdapter(this, orgNames);
         orgListView.setAdapter(adapter);
+    }
+
+    public void toggle_contents(View v) {
+        newOrgForm.setVisibility( newOrgForm.isShown()
+                ? View.GONE
+                : View.VISIBLE );
     }
 
     @Override

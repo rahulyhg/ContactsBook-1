@@ -8,4 +8,5 @@
     <string name="enter_phone_number">Enter phone number</string>
     <string name="save_new_organisation_contact">Save new organisation contact</string>
     <string name="contacts_listview_here">contacts listview here</string>
+    <string name="add_new_organisation">Add new organisation</string>
 </resources>
