@@ -150,10 +150,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.save_person:
-                String pFirstName = personFirstName.getText().toString();
-                String pLastName = personLastName.getText().toString();
-                String pEmail = personEmail.getText().toString();
-                String pPhone = personPhone.getText().toString();
+                String pFirstName = personFirstNameEdit.getText().toString();
+                String pLastName = personLastNameEdit.getText().toString();
+                String pEmail = personEmailEdit.getText().toString();
+                String pPhone = personPhoneEdit.getText().toString();
 
                 presenter.savePersonButtonTapped(pFirstName, pLastName, pEmail, pPhone);
                 break;

@@ -20,7 +20,6 @@ public class MainPresenter {
                 List<String> people = dbConnector.readAllPeople();
                 view.showPeopleList(people);
             }
-
         });
     }
 
@@ -31,7 +30,6 @@ public class MainPresenter {
                 List<Org> orgs = dbConnector.readAllOrgs();
                 view.showOrgList(orgs);
             }
-
         });
     }
 

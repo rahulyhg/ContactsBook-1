@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 
 public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConnecting {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "ContactsBook.db";
     private static final String TABLE_ORGS = "orgs";
     private static final String TABLE_PEOPLE = "people";
@@ -94,7 +94,26 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         onCreate(db);
     }
 
-    public void createPerson(final String firstName, final String lastName, final String email, final String phone, final DatabaseCallback callback) {}
+    public void createPerson(final String firstName, final String lastName, final String email, final String phone, final DatabaseCallback callback) {
+        final SQLiteDatabase write_db = this.getWritableDatabase();
+
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                ContentValues values = new ContentValues();
+                values.put(KEY_PEOPLE_FIRST_NAME, firstName);
+                values.put(KEY_PEOPLE_LAST_NAME, lastName);
+                values.put(KEY_PEOPLE_EMAIL, email);
+                values.put(KEY_PEOPLE_PHONE, phone);
+                values.put(KEY_PEOPLE_ORG_ID, 0);
+
+                write_db.insert(TABLE_PEOPLE, null, values);
+                write_db.close();
+
+                callback.actionComplete();
+            }
+        });
+    }
 
     public void createOrg(final String name, final String email, final String phone, final DatabaseCallback callback) {
         final SQLiteDatabase write_db = this.getWritableDatabase();
