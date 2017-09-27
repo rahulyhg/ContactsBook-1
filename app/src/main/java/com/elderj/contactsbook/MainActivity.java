@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         });
     }
 
+    public void showPeopleList(final List<String> people) {}
+
     public void toggle_contents(View view) {
         switch (view.getId()) {
             case R.id.expandable_new_org_form:

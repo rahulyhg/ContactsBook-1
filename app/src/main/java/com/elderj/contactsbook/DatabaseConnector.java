@@ -113,6 +113,11 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         });
     }
 
+    public ArrayList<String> readAllPeople() {
+
+        return new ArrayList<String>();
+    }
+
     public ArrayList<Org> readAllOrgs() {
         ArrayList<Org> orgs = new ArrayList<>();
         final SQLiteDatabase read_db = this.getReadableDatabase();

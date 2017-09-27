@@ -25,8 +25,10 @@ public class MainPresenter {
     }
 
     public void onResume() {
+        ArrayList<String> people = dbConnector.readAllPeople();
         ArrayList<Org> orgs = dbConnector.readAllOrgs();
 
+        view.showPeopleList(people);
         view.showOrgList(orgs);
     }
 
