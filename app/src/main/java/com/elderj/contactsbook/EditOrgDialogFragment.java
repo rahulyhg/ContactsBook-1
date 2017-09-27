@@ -13,7 +13,7 @@ import android.widget.EditText;
 public class EditOrgDialogFragment extends DialogFragment {
 
     public interface EditOrgDialogListener {
-        void onDialogPositiveClick(int orgId, String newName, String newEmail, String newPhone);
+        void onOrgDialogPositiveClick(int orgId, String newName, String newEmail, String newPhone);
     }
 
     EditOrgDialogListener listener;
@@ -70,7 +70,7 @@ public class EditOrgDialogFragment extends DialogFragment {
                         String newEmail = emailEdit.getText().toString();
                         String newPhone = phoneEdit.getText().toString();
 
-                        listener.onDialogPositiveClick(orgId, newName, newEmail, newPhone);
+                        listener.onOrgDialogPositiveClick(orgId, newName, newEmail, newPhone);
                     }
                 });
 

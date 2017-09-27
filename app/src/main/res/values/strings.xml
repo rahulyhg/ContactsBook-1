@@ -9,4 +9,9 @@
     <string name="save_new_organisation_contact">Save new organisation contact</string>
     <string name="add_new_organisation">Add new organisation</string>
     <string name="view_orgs">View organisations</string>
+    <string name="add_new_person">Add new person</string>
+    <string name="enter_first_name">Enter first name</string>
+    <string name="enter_last_name">Enter last name</string>
+    <string name="save_new_person_contact">Save new person contact</string>
+    <string name="view_people">View people</string>
 </resources>

@@ -16,6 +16,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView, View.OnClickListener, AdapterView.OnItemClickListener, EditOrgDialogFragment.EditOrgDialogListener {
 
+    private LinearLayout newPersonForm;
+    public TextView personFirstName;
+    public EditText personFirstNameEdit;
+    public TextView personLastName;
+    public EditText personLastNameEdit;
+    public TextView personEmail;
+    public EditText personEmailEdit;
+    public TextView personPhone;
+    public EditText personPhoneEdit;
+    public Button savePerson;
+    public ListView personListView;
+
     private LinearLayout newOrgForm;
     public TextView orgName;
     public EditText orgNameEdit;
@@ -34,13 +46,27 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        newPersonForm = (LinearLayout) findViewById(R.id.new_person_form);
+        newPersonForm.setVisibility(View.GONE);
+        personFirstNameEdit = (EditText) findViewById(R.id.person_first_name_edit);
+        personLastNameEdit = (EditText) findViewById(R.id.person_last_name_edit);
+        personEmailEdit = (EditText) findViewById(R.id.person_email_edit);
+        personPhoneEdit = (EditText) findViewById(R.id.person_phone_edit);
+        savePerson = (Button) findViewById(R.id.save_person);
+        savePerson.setOnClickListener(this);
+
+        personListView = (ListView) findViewById(R.id.person_listview);
+        personListView.setVisibility(View.GONE);
+        personListView.setOnItemClickListener(this);
+        personFirstName = (TextView) findViewById(R.id.person_first_name);
+        personLastName = (TextView) findViewById(R.id.person_last_name);
+        personEmail = (TextView) findViewById(R.id.person_email);
+        personPhone = (TextView) findViewById(R.id.person_phone);
+
         newOrgForm = (LinearLayout) findViewById(R.id.new_org_form);
         newOrgForm.setVisibility(View.GONE);
-        orgName = (TextView) findViewById(R.id.org_name);
         orgNameEdit = (EditText) findViewById(R.id.org_name_edit);
-        orgEmail = (TextView) findViewById(R.id.org_email);
         orgEmailEdit = (EditText) findViewById(R.id.org_email_edit);
-        orgPhone = (TextView) findViewById(R.id.org_phone);
         orgPhoneEdit = (EditText) findViewById(R.id.org_phone_edit);
         saveOrg = (Button) findViewById(R.id.save_org);
         saveOrg.setOnClickListener(this);
@@ -48,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         orgListView = (ListView) findViewById(R.id.org_listview);
         orgListView.setVisibility(View.GONE);
         orgListView.setOnItemClickListener(this);
+        orgName = (TextView) findViewById(R.id.org_name);
+        orgEmail = (TextView) findViewById(R.id.org_email);
+        orgPhone = (TextView) findViewById(R.id.org_phone);
 
         context = this;
 
@@ -70,10 +99,28 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         });
     }
 
-    public void showPeopleList(final List<String> people) {}
+    public void showPeopleList(final List<String> people) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                PersonAdapter adapter = new PersonAdapter(context, people);
+                personListView.setAdapter(adapter);
+            }
+        });
+    }
 
     public void toggle_contents(View view) {
         switch (view.getId()) {
+            case R.id.expandable_new_person_form:
+                newPersonForm.setVisibility( newPersonForm.isShown()
+                        ? View.GONE
+                        : View.VISIBLE );
+                break;
+            case R.id.expandable_person_listview:
+                personListView.setVisibility( personListView.isShown()
+                        ? View.GONE
+                        : View.VISIBLE );
+                break;
             case R.id.expandable_new_org_form:
                 newOrgForm.setVisibility( newOrgForm.isShown()
                         ? View.GONE
@@ -95,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     }
 
     @Override
-    public void onDialogPositiveClick(int orgId, String newName, String newEmail, String newPhone) {
+    public void onOrgDialogPositiveClick(int orgId, String newName, String newEmail, String newPhone) {
         presenter.updateOrgTapped(orgId, newName, newEmail, newPhone);
     }
 
