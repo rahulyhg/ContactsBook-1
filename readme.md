@@ -3,7 +3,7 @@
 
 ### Run the App
 
-[Download the APK file](https://github.com/skomer/			), and install it on your Android device. Then look for an app named 'ContactsBook'.
+[Download the APK file](https://github.com/skomer/ContactsBook/blob/master/app-debug.apk), and install it on your Android device. Then look for an app named 'ContactsBook'.
 
 
 ### Development
@@ -26,7 +26,7 @@ Unable to solve this issue stalled progress on the app, meaning that I was unabl
 
 However, I had intended much of the implementation for the 'Person' contacts to be very similar to that for the 'Org' contacts. The main additional features that are lacking are the ability to delete a person or organisation contact, and the ability to see which people are members of which organisation.
 
-I had intended to write the delete entries functionality into the 'DatabaseConnector' class, using the SQL command `DELETE FROM <table name> WHERE id = <provided id>;`.
+I had intended to write the delete entries functionality into the 'DatabaseConnector' class, using the SQL command `DELETE FROM <table name> WHERE id = <provided id>;`
 
 Retrieving a list of people who were members of an organisation would need the command
 
