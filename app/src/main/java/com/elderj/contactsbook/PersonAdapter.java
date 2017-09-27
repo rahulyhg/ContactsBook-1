@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class PersonAdapter extends ArrayAdapter<String> {
+public class PersonAdapter extends ArrayAdapter<Person> {
 
-    private String person;
+    private Person person;
 
-    public PersonAdapter(Context context, List<String> people) {
+    public PersonAdapter(Context context, List<Person> people) {
         super(context, 0, people);
     }
 

@@ -105,7 +105,7 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
                 values.put(KEY_PEOPLE_LAST_NAME, lastName);
                 values.put(KEY_PEOPLE_EMAIL, email);
                 values.put(KEY_PEOPLE_PHONE, phone);
-                values.put(KEY_PEOPLE_ORG_ID, 0);
+//                values.put(KEY_PEOPLE_ORG_ID, 0);
 
                 write_db.insert(TABLE_PEOPLE, null, values);
                 write_db.close();
@@ -134,9 +134,9 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         });
     }
 
-    public ArrayList<String> readAllPeople() {
+    public ArrayList<Person> readAllPeople() {
 
-        return new ArrayList<String>();
+        return new ArrayList<Person>();
     }
 
     public ArrayList<Org> readAllOrgs() {

@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
         });
     }
 
-    public void showPeopleList(final List<String> people) {
+    public void showPeopleList(final List<Person> people) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

@@ -17,7 +17,7 @@ public class MainPresenter {
         dbConnector.createPerson(firstName, lastName, email, phone, new DatabaseCallback() {
             @Override
             public void actionComplete() {
-                List<String> people = dbConnector.readAllPeople();
+                List<Person> people = dbConnector.readAllPeople();
                 view.showPeopleList(people);
             }
         });
@@ -34,7 +34,7 @@ public class MainPresenter {
     }
 
     public void onResume() {
-        ArrayList<String> people = dbConnector.readAllPeople();
+        ArrayList<Person> people = dbConnector.readAllPeople();
         ArrayList<Org> orgs = dbConnector.readAllOrgs();
 
         view.showPeopleList(people);

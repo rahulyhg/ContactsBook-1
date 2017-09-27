@@ -66,7 +66,7 @@ public class MainPresenterTest {
 
         presenter.onResume();
 
-        verify(view).showPeopleList(anyListOf(String.class));
+        verify(view).showPeopleList(anyListOf(Person.class));
     }
 
     @Test
