@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 
 public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConnecting {
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "ContactsBook.db";
     private static final String TABLE_ORGS = "orgs";
     private static final String TABLE_PEOPLE = "people";
@@ -95,20 +95,19 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
     }
 
     public void createPerson(final String firstName, final String lastName, final String email, final String phone, final DatabaseCallback callback) {
-        final SQLiteDatabase write_db = this.getWritableDatabase();
+//        final SQLiteDatabase write_db = this.getWritableDatabase();
 
         executorService.submit(new Runnable() {
             @Override
             public void run() {
-                ContentValues values = new ContentValues();
-                values.put(KEY_PEOPLE_FIRST_NAME, firstName);
-                values.put(KEY_PEOPLE_LAST_NAME, lastName);
-                values.put(KEY_PEOPLE_EMAIL, email);
-                values.put(KEY_PEOPLE_PHONE, phone);
-//                values.put(KEY_PEOPLE_ORG_ID, 0);
-
-                write_db.insert(TABLE_PEOPLE, null, values);
-                write_db.close();
+//                ContentValues values = new ContentValues();
+//                values.put(KEY_PEOPLE_FIRST_NAME, firstName);
+//                values.put(KEY_PEOPLE_LAST_NAME, lastName);
+//                values.put(KEY_PEOPLE_EMAIL, email);
+//                values.put(KEY_PEOPLE_PHONE, phone);
+//
+//                write_db.insert(TABLE_PEOPLE, null, values);
+//                write_db.close();
 
                 callback.actionComplete();
             }
@@ -135,8 +134,26 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
     }
 
     public ArrayList<Person> readAllPeople() {
-
-        return new ArrayList<Person>();
+        ArrayList<Person> people = new ArrayList<>();
+//        final SQLiteDatabase read_db = this.getReadableDatabase();
+//
+//        String sql = "SELECT * FROM " + TABLE_PEOPLE;
+//        Cursor cursor = read_db.rawQuery(sql, null);
+//
+//        if (cursor.moveToFirst()) {
+//            do {
+//                Person person = new Person(
+//                        cursor.getInt(0),
+//                        cursor.getString(1),
+//                        cursor.getString(2),
+//                        cursor.getString(3),
+//                        cursor.getString(4)
+//                );
+//                people.add(person);
+//            } while (cursor.moveToNext());
+//        }
+//        read_db.close();
+        return people;
     }
 
     public ArrayList<Org> readAllOrgs() {
