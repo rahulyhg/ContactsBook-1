@@ -1,4 +1,4 @@
-## Android app address book displaying and saving contact information for organisations and people.
+## Android app address book displaying and saving contact information for organisations and people
 
 
 ### Run the App
@@ -40,4 +40,4 @@ Retrieving a list of people who were members of an organisation would need the c
 The contacts book can:
 - add a new organisation contact
 - display a list of existing organisation contacts
-- persist an entered organisation contact, so that if the app is closed and reopened the entered contacts will display
+- persist an entered organisation contact, so that if the app is closed and reopened the entered contacts will display.
