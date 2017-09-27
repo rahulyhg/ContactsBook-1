@@ -53,12 +53,21 @@ public class MainPresenterTest {
     }
 
     @Test
-    public void on_resume_presenter_reads_orgs_from_database() {
+    public void on_resume_presenter_tells_view_to_show_people_list() {
         presenter = new MainPresenter(view, dbConnector);
 
         presenter.onResume();
 
-        verify(dbConnector).readAllOrgs();
+        verify(view).showPeopleList(anyListOf(String.class));
+    }
+
+    @Test
+    public void on_resume_presenter_reads_people_from_database() {
+        presenter = new MainPresenter(view, dbConnector);
+
+        presenter.onResume();
+
+        verify(dbConnector).readAllPeople();
     }
 
     @Test
