@@ -13,6 +13,17 @@ public class MainPresenter {
         this.dbConnector = dbConnector;
     }
 
+    public void savePersonButtonTapped(String firstName, String lastName, String email, String phone) {
+        dbConnector.createPerson(firstName, lastName, email, phone, new DatabaseCallback() {
+            @Override
+            public void actionComplete() {
+                List<String> people = dbConnector.readAllPeople();
+                view.showPeopleList(people);
+            }
+
+        });
+    }
+
     public void saveOrgButtonTapped(String name, String email, String phone) {
         dbConnector.createOrg(name, email, phone, new DatabaseCallback() {
             @Override

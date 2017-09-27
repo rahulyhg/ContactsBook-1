@@ -94,6 +94,8 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
         onCreate(db);
     }
 
+    public void createPerson(final String firstName, final String lastName, final String email, final String phone, final DatabaseCallback callback) {}
+
     public void createOrg(final String name, final String email, final String phone, final DatabaseCallback callback) {
         final SQLiteDatabase write_db = this.getWritableDatabase();
 

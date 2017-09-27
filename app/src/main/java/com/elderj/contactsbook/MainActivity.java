@@ -149,12 +149,20 @@ public class MainActivity extends AppCompatActivity implements MainActivityView,
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.save_org:
-                String name = orgNameEdit.getText().toString();
-                String email = orgEmailEdit.getText().toString();
-                String phone = orgPhoneEdit.getText().toString();
+            case R.id.save_person:
+                String pFirstName = personFirstName.getText().toString();
+                String pLastName = personLastName.getText().toString();
+                String pEmail = personEmail.getText().toString();
+                String pPhone = personPhone.getText().toString();
 
-                presenter.saveOrgButtonTapped(name, email, phone);
+                presenter.savePersonButtonTapped(pFirstName, pLastName, pEmail, pPhone);
+                break;
+            case R.id.save_org:
+                String oName = orgNameEdit.getText().toString();
+                String oEmail = orgEmailEdit.getText().toString();
+                String oPhone = orgPhoneEdit.getText().toString();
+
+                presenter.saveOrgButtonTapped(oName, oEmail, oPhone);
                 break;
         }
 

@@ -33,7 +33,7 @@ public class MainPresenterTest {
     @Test
     public void on_save_person_button_tapped_presenter_tells_database_to_save_new_person() {
         presenter = new MainPresenter(view, dbConnector);
-        presenter.savePersonButtonTapped("", "", "");
+        presenter.savePersonButtonTapped("", "", "", "");
 
         verify(dbConnector).createPerson(any(String.class), any(String.class), any(String.class), any(String.class), any(DatabaseCallback.class));
     }
