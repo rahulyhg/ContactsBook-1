@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 
 public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConnecting {
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "ContactsBook.db";
     private static final String TABLE_ORGS = "orgs";
     private static final String TABLE_PEOPLE = "people";
@@ -28,7 +28,7 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
     private static final String KEY_PEOPLE_LAST_NAME = "last_name";
     private static final String KEY_PEOPLE_EMAIL = "email";
     private static final String KEY_PEOPLE_PHONE = "phone";
-    private static final String KEY_PEOPLE_ORG_ID = "org_id";
+    private static final String KEY_PEOPLE_ORG_ID = "orgs_id";
 
     private static final String KEY_ORG_PEOPLE_ID = "id";
     private static final String KEY_ORG_PEOPLE_ORG_ID = "org_id";
@@ -60,8 +60,8 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
                         KEY_PEOPLE_EMAIL + " VARCHAR(255), " +
                         KEY_PEOPLE_PHONE + " VARCHAR(255), " +
                         KEY_PEOPLE_ORG_ID + " INTEGER, " +
-                        " FOREIGN KEY " + KEY_PEOPLE_ORG_ID +
-                            " REFERENCES " + TABLE_ORGS + "(" + KEY_ORG_ID + ")" +
+                        "FOREIGN KEY (" + KEY_PEOPLE_ORG_ID +
+                            ") REFERENCES " + TABLE_ORGS + "(" + KEY_ORG_ID + ")" +
                             " ON UPDATE SET NULL ON DELETE SET NULL" +
                         "); ";
 
@@ -69,20 +69,18 @@ public class DatabaseConnector extends SQLiteOpenHelper implements DatabaseConne
                 "CREATE TABLE " + TABLE_ORG_PEOPLE + "(" +
                         KEY_ORG_PEOPLE_ID + " INTEGER PRIMARY KEY, " +
                         KEY_ORG_PEOPLE_ORG_ID + " INTEGER, " +
-                        " FOREIGN KEY " + KEY_ORG_PEOPLE_ORG_ID +
-                        " REFERENCES " + TABLE_ORGS + "(" + KEY_ORG_ID + ") " +
-                        " ON UPDATE SET NULL ON DELETE SET NULL, " +
                         KEY_ORG_PEOPLE_PEOPLE_ID + " INTEGER, " +
-                        " FOREIGN KEY " + KEY_ORG_PEOPLE_PEOPLE_ID +
-                            " REFERENCES " + TABLE_PEOPLE + "(" + KEY_PEOPLE_ID + ")" +
+                        "FOREIGN KEY (" + KEY_ORG_PEOPLE_ORG_ID +
+                        ") REFERENCES " + TABLE_ORGS + "(" + KEY_ORG_ID + ")" +
+                        " ON UPDATE SET NULL ON DELETE SET NULL, " +
+                        "FOREIGN KEY (" + KEY_ORG_PEOPLE_PEOPLE_ID +
+                            ") REFERENCES " + TABLE_PEOPLE + "(" + KEY_PEOPLE_ID + ")" +
                             " ON UPDATE SET NULL ON DELETE SET NULL" +
-                        "); ";
+                        ");";
 
-        String CREATE_TABLES = CREATE_ORGS_TABLE +
-                        CREATE_PEOPLE_TABLE +
-                        CREATE_ORG_PEOPLE_TABLE;
-
-        db.execSQL(CREATE_TABLES);
+        db.execSQL(CREATE_ORGS_TABLE);
+        db.execSQL(CREATE_PEOPLE_TABLE);
+        db.execSQL(CREATE_ORG_PEOPLE_TABLE);
     }
 
     @Override
