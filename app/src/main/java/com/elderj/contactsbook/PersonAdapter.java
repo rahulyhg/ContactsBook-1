@@ -25,13 +25,13 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         }
 
         TextView personFirstName = (TextView) convertView.findViewById(R.id.person_first_name);
-//        personFirstName.setText(person);
+        personFirstName.setText(person.firstName);
         TextView personLastName = (TextView) convertView.findViewById(R.id.person_last_name);
-//        personFirstName.setText(person);
+        personLastName.setText(person.lastName);
         TextView personEmail = (TextView) convertView.findViewById(R.id.person_email);
-//        personEmail.setText(person);
+        personEmail.setText(person.email);
         TextView personPhone = (TextView) convertView.findViewById(R.id.person_phone);
-//        personPhone.setText(person);
+        personPhone.setText(person.phone);
 
         return convertView;
     }
